@@ -9,18 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Bank Comparer';
+var bank_service_1 = require('./bank.service');
+var DashboardComponent = (function () {
+    function DashboardComponent(bankService) {
+        this.bankService = bankService;
+        this.banks = [];
     }
-    AppComponent = __decorate([
+    DashboardComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.bankService.getBanks().then(function (banks) { return _this.banks = banks.slice(1, 5); });
+    };
+    DashboardComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n    <h1>{{title}}</h1>\n    <nav>\n      <a routerLink=\"/dashboard\">Dashboard</a>\n      <a routerLink=\"/banks\">Banks</a>\n    </nav>\n    <router-outlet></router-outlet>\n    "
+            moduleId: module.id,
+            selector: 'dashboard',
+            templateUrl: 'dashboard.component.html'
         }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+        __metadata('design:paramtypes', [bank_service_1.BankService])
+    ], DashboardComponent);
+    return DashboardComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.DashboardComponent = DashboardComponent;
+//# sourceMappingURL=dashboard.component.js.map

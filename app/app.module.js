@@ -11,7 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
+var router_1 = require('@angular/router');
 var app_component_1 = require('./app.component');
+var bank_detail_component_1 = require('./bank-detail.component');
+var banks_component_1 = require('./banks.component');
+var dashboard_component_1 = require('./dashboard.component');
+var bank_service_1 = require('./bank.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -19,9 +24,22 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                forms_1.FormsModule
+                forms_1.FormsModule,
+                router_1.RouterModule.forRoot([
+                    { path: 'banks', component: banks_component_1.BanksComponent },
+                    { path: 'dashboard', component: dashboard_component_1.DashboardComponent },
+                    { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+                ])
             ],
-            declarations: [app_component_1.AppComponent],
+            declarations: [
+                app_component_1.AppComponent,
+                dashboard_component_1.DashboardComponent,
+                bank_detail_component_1.BankDetailComponent,
+                banks_component_1.BanksComponent
+            ],
+            providers: [
+                bank_service_1.BankService
+            ],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

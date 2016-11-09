@@ -9,18 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'Bank Comparer';
+var bank_1 = require('./bank');
+var BankDetailComponent = (function () {
+    function BankDetailComponent() {
     }
-    AppComponent = __decorate([
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', bank_1.Bank)
+    ], BankDetailComponent.prototype, "bank", void 0);
+    BankDetailComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n    <h1>{{title}}</h1>\n    <nav>\n      <a routerLink=\"/dashboard\">Dashboard</a>\n      <a routerLink=\"/banks\">Banks</a>\n    </nav>\n    <router-outlet></router-outlet>\n    "
+            selector: 'bank-details',
+            template: "\n  <div *ngIf=\"bank\" id=\"bank-details\">\n    <h2>{{bank.name}} details!</h2>\n    <div><label>id: </label>{{bank.id}}</div>\n    <div><label>name: </label><input [(ngModel)]=\"bank.name\" placeholder=\"name\"></div>\n  </div>\n  "
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], BankDetailComponent);
+    return BankDetailComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.BankDetailComponent = BankDetailComponent;
+//# sourceMappingURL=bank-detail.component.js.map
