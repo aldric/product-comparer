@@ -27,14 +27,19 @@ var BankDetailComponent = (function () {
                 .then(function (bank) { return _this.bank = bank; });
         });
     };
+    BankDetailComponent.prototype.goBack = function () {
+        this.location.back();
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', bank_1.Bank)
     ], BankDetailComponent.prototype, "bank", void 0);
     BankDetailComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'bank-details',
-            template: "\n  <div *ngIf=\"bank\" id=\"bank-details\">\n    <h2>{{bank.name}} details!</h2>\n    <div><label>id: </label>{{bank.id}}</div>\n    <div><label>name: </label><input [(ngModel)]=\"bank.name\" placeholder=\"name\"></div>\n  </div>\n  "
+            templateUrl: 'bank-detail.component.html',
+            styleUrls: ['bank-detail.component.css']
         }), 
         __metadata('design:paramtypes', [bank_service_1.BankService, router_1.ActivatedRoute, common_1.Location])
     ], BankDetailComponent);

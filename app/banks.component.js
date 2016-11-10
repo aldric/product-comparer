@@ -9,10 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var bank_service_1 = require('./bank.service');
 var BanksComponent = (function () {
-    function BanksComponent(bankService) {
+    function BanksComponent(bankService, router) {
         this.bankService = bankService;
+        this.router = router;
     }
     BanksComponent.prototype.getBanks = function () {
         var _this = this;
@@ -21,17 +23,20 @@ var BanksComponent = (function () {
     BanksComponent.prototype.onSelect = function (bank) {
         this.selectedBank = bank;
     };
+    BanksComponent.prototype.gotoDetail = function () {
+        this.router.navigate(['/bank', this.selectedBank.id]);
+    };
     BanksComponent.prototype.ngOnInit = function () {
         this.getBanks();
     };
     BanksComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'banks',
-            template: "\n \t<h2>My Banks</h2>\n  \t<ul class=\"banks\">\n    <li *ngFor=\"let bank of banks\" (click)=\"onSelect(bank)\" [class.selected]=\"bank === selectedBank\">\n      <span class=\"badge\">{{bank.id}}</span> {{bank.name}}\n    </li>\n  \t</ul>\n  \t<bank-details [bank]=\"selectedBank\"></bank-details>",
-            styles: ["\n\t  .selected {\n\t    background-color: #CFD8DC !important;\n\t    color: white;\n\t  }\n\t  .banks {\n\t    margin: 0 0 2em 0;\n\t    list-style-type: none;\n\t    padding: 0;\n\t    width: 15em;\n\t  }\n\t  .banks li {\n\t    cursor: pointer;\n\t    position: relative;\n\t    left: 0;\n\t    background-color: #EEE;\n\t    margin: .5em;\n\t    padding: .3em 0;\n\t    height: 1.6em;\n\t    border-radius: 4px;\n\t  }\n\t  .banks li.selected:hover {\n\t    background-color: #BBD8DC !important;\n\t    color: white;\n\t  }\n\t  .banks li:hover {\n\t    color: #607D8B;\n\t    background-color: #DDD;\n\t    left: .1em;\n\t  }\n\t  .banks .text {\n\t    position: relative;\n\t    top: -3px;\n\t  }\n\t  .banks .badge {\n\t    display: inline-block;\n\t    font-size: small;\n\t    color: white;\n\t    padding: 0.8em 0.7em 0 0.7em;\n\t    background-color: #607D8B;\n\t    line-height: 1em;\n\t    position: relative;\n\t    left: -1px;\n\t    top: -4px;\n\t    height: 1.8em;\n\t    margin-right: .8em;\n\t    border-radius: 4px 0 0 4px;\n\t  }"
-            ]
+            templateUrl: 'banks.component.html',
+            styleUrls: ['banks.component.css']
         }), 
-        __metadata('design:paramtypes', [bank_service_1.BankService])
+        __metadata('design:paramtypes', [bank_service_1.BankService, router_1.Router])
     ], BanksComponent);
     return BanksComponent;
 }());

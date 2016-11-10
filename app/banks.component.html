@@ -1,0 +1,12 @@
+	<h2>My Banks</h2>
+  	<ul class="banks">
+    <li *ngFor="let bank of banks" (click)="onSelect(bank)" [class.selected]="bank === selectedBank">
+      <span class="badge">{{bank.id}}</span> {{bank.name}}
+    </li>
+  	</ul>
+  	<div *ngIf="selectedBank">
+    <h2>
+    {{selectedBank.name | uppercase}} is my bank
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+    </div>

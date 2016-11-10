@@ -10,16 +10,13 @@ import { DashboardComponent } from './dashboard.component';
 
 import { BankService } from './bank.service';
 
+import { AppRoutingModule } from './app-routing.module';
+
 @NgModule({
   imports:[
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: 'bank/:id', component: BankDetailComponent },
-      { path: 'banks', component: BanksComponent },
-      { path: 'dashboard', component: DashboardComponent },
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
-    ])
+    AppRoutingModule
   ],
   declarations: [ 
   	AppComponent,
