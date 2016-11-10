@@ -16,6 +16,10 @@ var BankService = (function () {
     BankService.prototype.getBanks = function () {
         return Promise.resolve(mock_banks_1.BANKS);
     };
+    BankService.prototype.getBank = function (id) {
+        return this.getBanks()
+            .then(function (banks) { return banks.find(function (bank) { return bank.id === id; }); });
+    };
     BankService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

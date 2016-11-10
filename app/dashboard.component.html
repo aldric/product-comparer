@@ -1,8 +1,6 @@
 <h3>Top Banks</h3>
 <div class="grid grid-pad">
-  <div *ngFor="let bank of banks" class="col-1-4">
-    <div class="module hero">
+	<a *ngFor="let bank of banks"  [routerLink]="['/bank', bank.id]"  class="col-1-4">
       <h4>{{bank.name}}</h4>
-    </div>
-  </div>
+    </a>
 </div>

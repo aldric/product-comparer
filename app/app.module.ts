@@ -15,6 +15,7 @@ import { BankService } from './bank.service';
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
+      { path: 'bank/:id', component: BankDetailComponent },
       { path: 'banks', component: BanksComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' }

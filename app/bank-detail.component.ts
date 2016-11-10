@@ -1,4 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params }   from '@angular/router';
+import { Location }                 from '@angular/common';
+
+import { BankService } from './bank.service';
 import { Bank } from './bank';
 
 @Component({
@@ -12,7 +16,21 @@ import { Bank } from './bank';
   `
 })
 
-export class BankDetailComponent { 
+export class BankDetailComponent implements OnInit { 
 	 @Input()
 	 bank: Bank;
+
+	constructor(
+  		private bankService: BankService,
+  		private route: ActivatedRoute,
+  		private location: Location
+	) {}
+
+	ngOnInit(): void {
+		this.route.params.forEach((params : Params) => {
+			let id = +params['id'];
+			this.bankService.getBank(id)
+				.then(bank => this.bank = bank);
+		})
+	}
 }

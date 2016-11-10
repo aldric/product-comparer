@@ -26,6 +26,7 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
                 router_1.RouterModule.forRoot([
+                    { path: 'bank/:id', component: bank_detail_component_1.BankDetailComponent },
                     { path: 'banks', component: banks_component_1.BanksComponent },
                     { path: 'dashboard', component: dashboard_component_1.DashboardComponent },
                     { path: '', redirectTo: '/dashboard', pathMatch: 'full' }

@@ -9,10 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var common_1 = require('@angular/common');
+var bank_service_1 = require('./bank.service');
 var bank_1 = require('./bank');
 var BankDetailComponent = (function () {
-    function BankDetailComponent() {
+    function BankDetailComponent(bankService, route, location) {
+        this.bankService = bankService;
+        this.route = route;
+        this.location = location;
     }
+    BankDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.params.forEach(function (params) {
+            var id = +params['id'];
+            _this.bankService.getBank(id)
+                .then(function (bank) { return _this.bank = bank; });
+        });
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', bank_1.Bank)
@@ -22,7 +36,7 @@ var BankDetailComponent = (function () {
             selector: 'bank-details',
             template: "\n  <div *ngIf=\"bank\" id=\"bank-details\">\n    <h2>{{bank.name}} details!</h2>\n    <div><label>id: </label>{{bank.id}}</div>\n    <div><label>name: </label><input [(ngModel)]=\"bank.name\" placeholder=\"name\"></div>\n  </div>\n  "
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [bank_service_1.BankService, router_1.ActivatedRoute, common_1.Location])
     ], BankDetailComponent);
     return BankDetailComponent;
 }());
