@@ -11,12 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
+var http_1 = require('@angular/http');
+var app_routing_module_1 = require('./app-routing.module');
 var app_component_1 = require('./app.component');
 var bank_detail_component_1 = require('./bank-detail.component');
 var banks_component_1 = require('./banks.component');
 var dashboard_component_1 = require('./dashboard.component');
 var bank_service_1 = require('./bank.service');
-var app_routing_module_1 = require('./app-routing.module');
+var mean_pipe_1 = require('./mean.pipe');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -25,13 +27,15 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
+                http_1.HttpModule,
                 app_routing_module_1.AppRoutingModule
             ],
             declarations: [
                 app_component_1.AppComponent,
                 dashboard_component_1.DashboardComponent,
                 bank_detail_component_1.BankDetailComponent,
-                banks_component_1.BanksComponent
+                banks_component_1.BanksComponent,
+                mean_pipe_1.MeanPipe
             ],
             providers: [
                 bank_service_1.BankService

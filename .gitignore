@@ -83,3 +83,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+#Compiled ts -> js files
+app/*.js
+app/*.js.map

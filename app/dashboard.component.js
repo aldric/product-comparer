@@ -17,7 +17,7 @@ var DashboardComponent = (function () {
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.bankService.getBanks().then(function (banks) { return _this.banks = banks.slice(1, 5); });
+        this.bankService.getBanks().subscribe(function (banks) { return _this.banks = banks.slice(1, 5); });
     };
     DashboardComponent = __decorate([
         core_1.Component({

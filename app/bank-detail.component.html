@@ -2,5 +2,9 @@
     <h2>{{bank.name}} details!</h2>
     <div><label>id: </label>{{bank.id}}</div>
     <div><label>name: </label><input [(ngModel)]="bank.name" placeholder="name"></div>
+    <h4>Moyenne générale : {{bank.criterias | mean}}</h4>
+    <div *ngFor="let criteria of bank.criterias">
+    	<span>{{criteria.label}} {{criteria.description}} = {{criteria.value}}</span>
+    </div>
     <button (click)="goBack()">Back</button>
   </div>

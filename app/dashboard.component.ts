@@ -17,6 +17,6 @@ export class DashboardComponent implements OnInit {
 	constructor(private bankService:BankService) { }
 
 	ngOnInit() : void {
-		this.bankService.getBanks().then(banks => this.banks = banks.slice(1, 5))
+		this.bankService.getBanks().subscribe(banks => this.banks = banks.slice(1, 5))
 	}
 }

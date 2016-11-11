@@ -18,7 +18,7 @@ var BanksComponent = (function () {
     }
     BanksComponent.prototype.getBanks = function () {
         var _this = this;
-        this.bankService.getBanks().then(function (banks) { return _this.banks = banks; });
+        this.bankService.getBanks().subscribe(function (banks) { return _this.banks = banks; });
     };
     BanksComponent.prototype.onSelect = function (bank) {
         this.selectedBank = bank;

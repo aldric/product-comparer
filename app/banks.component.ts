@@ -19,7 +19,7 @@ export class BanksComponent implements OnInit {
   constructor(private bankService: BankService, private router: Router) { }
 
   getBanks(): void {
-    this.bankService.getBanks().then(banks => this.banks = banks);
+    this.bankService.getBanks().subscribe(banks => this.banks = banks);
   }
   
   onSelect(bank: Bank): void {
